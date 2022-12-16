@@ -54,18 +54,39 @@ Map<String, String[]> paramMap = request.getParameterMap();
 %>
 <%
 //Enumerator 랑 map 이랑 같이 사용하기 
-// Enumerator를 이용해서 이름을 뽑아내고 , 그 이름을 가지고 map 을 돌려서 값을 얻자
-//Enumeration<String> key = request.getParameterNames();
-///while(key.hasMoreElements()){
-	//String keyName = key.nextElement();
-//}
+//Enumerator를 이용해서 이름을 뽑아내고 , 그 이름을 가지고 map 을 돌려서 값을 얻자
+/* 
+Enumeration<String> key = request.getParameterNames();
+while(key.hasMoreElements()){
+	String keyName = key.nextElement();
+	
+	
+	
+}
 
-//Map<String, String[]> value = request.getParameterMap();
-	//String[] value1 = value.get(subject);
-	//for(String keyName : value1){
-		//System.out.println(keyName);
-		//out.println(keyName+"<br/>");
-	//}
+Map<String, String[]> value = request.getParameterMap();
+	String[] value1 = value.get(key);
+	for(String keyName : value1){
+		System.out.println(keyName);
+		out.println(keyName+"<br/>");
+	}
+ */
+	
+	Map<String, String[]> map = request.getParameterMap();
+
+	Enumeration<String> key = request.getParameterNames();
+	while(key.hasMoreElements()){
+		String keyName = key.nextElement();
+		String[] value1 = map.get(keyName);
+		for(String v : value1){
+			System.out.println(v);
+			out.println(keyName+":"+v+"<br/>");
+		}
+		
+		
+	}
+
+		
 
 %>
 	</ul>
