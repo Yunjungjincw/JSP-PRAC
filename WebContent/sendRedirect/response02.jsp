@@ -21,8 +21,14 @@
 		out.write("ID: "+mid +"<br>");
 		out.write("PW: "+pwd+"<br>");
 		
-	// 01 => 03 으로 바로 갈 수 있게 해줌
-	response.sendRedirect("response03.jsp?id2="+mid+"&pw2=+"+pwd);
+	// 01.jsp -> 02.jsp -> 03.jsp
+	// user가 보는 페이지 01.jsp -> 03.jsp
+	// 거쳐가는 페이지 02.jsp
+	// 거쳐가는 페이지에서 파라미터를 전달시키지 않는다.
+	// 아래는 파라미터를 전달 시키기 위한 작업
+	// response.sedRedirect("페이지주소?파라미터명=값&파라미터명=값")
+	//response.sendRedirect("response03.jsp?id2="+mid+"&pw2=+"+pwd);
+	//개발자가 의도를 가지고 데이터를 넘긴 것.
 		
 		%>	
 	<!-- 01에서  받은 정보를 파라미터를 통해 03으로 보내준다.  -->

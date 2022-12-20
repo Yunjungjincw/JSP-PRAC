@@ -73,7 +73,6 @@ Map<String, String[]> value = request.getParameterMap();
  */
 	
 	Map<String, String[]> map = request.getParameterMap();
-
 	Enumeration<String> key = request.getParameterNames();
 	while(key.hasMoreElements()){
 		String keyName = key.nextElement();
