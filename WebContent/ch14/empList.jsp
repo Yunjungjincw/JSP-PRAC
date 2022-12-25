@@ -40,22 +40,27 @@
  	<caption>부서목록</caption>
  	<thead>
  	 <tr>
- 	 	<th>부서번호</th>
- 	 	<th>부서명</th>
- 	 	<th>소재지</th>
+ 	 	<th>EMPNO</th>
+ 	 	<th>ENAME</th>
+ 	 	<th>JOB</th>
+ 	 	<th>MGR</th>
+ 	 	<th>HIREDATE</th>
+ 	 	<th>SAL</th>
+ 	 	<th>COMM</th>
+ 	 	<th>DEPTNO</th>
  	 </thead>
  	 <tbody>
 <%
- 	String url = "jdbc:oracle:thin:@localhost:1521/xe";
-		String user = "scott";
-		String password = "tiger";
+ 	String url = "jdbc:mysql://127.0.0.1:3306/chap14?useUnicode=true&characterEncoding=utf8";
+		String user = "jspexam";
+		String password = "jsppw";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
 		 try {
 			
-			Class.forName("oracle.jdbc.OracleDriver");
+			Class.forName("com.mysql.jdbc.Driver");
 		 }catch (ClassNotFoundException e) {	
 			System.out.println("ClassNotFoundception발생"+e);
 		}finally {
@@ -77,8 +82,8 @@
 		//3.객체준비-Statement객체,PreparedStatement 객체
 	try {
 		String sql = 
-				"select deptno,dname,loc "
-				+ " from dept "; 
+				"select EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO" 
+				+" from emp"; 
 			stmt = conn.prepareStatement(sql);
 			System.out.println("3.prepareStatement 객체 생성");
 	
@@ -91,15 +96,25 @@
 			System.out.println("4.쿼리문실행결과 : ");
 			
 			while(rs.next()) {
-				int dno = rs.getInt("deptno");
-				String dName= rs.getString("dname");
-				String loc = rs.getString("loc");
+				int empno = rs.getInt("EMPNO");
+				String ename= rs.getString("ENAME");
+				String job = rs.getString("JOB");
+				int mgr = rs.getInt("MGR");
+				Date hireDate = rs.getDate("HIREDATE");
+				int sal = rs.getInt("SAL");
+				int comm = rs.getInt("COMM");
+				int deptno = rs.getInt("DEPTNO");
  	 %>
  	 <!-- 테이블의 조회된 레코드수만큼 반복 start -->
  	 	<tr>
- 	 	 <td><%=dno %></td>
- 	 	 <td><%=dName %></td>
- 	 	 <td><%=loc %></td>
+ 	 	 <td><%=empno %></td>
+ 	 	 <td><%=ename %></td>
+ 	 	 <td><%=job %></td>
+ 	 	 <td><%=mgr %></td>
+ 	 	 <td><%=hireDate %></td>
+ 	 	 <td><%=sal %></td>
+ 	 	 <td><%=comm %></td>
+ 	 	 <td><%=deptno%></td>
  	 	</tr>
 
 <%
