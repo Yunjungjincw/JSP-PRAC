@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>pro1</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  
+  <!--xml 주석문  -->
+  <!--p409참고
+  서버올라갈ㄸ ㅐ 웹어플리케이션에 대한 정보를 읽어들이게 된다.
+  따라서 해당 어플리케이션에 대한 각 종 환경을 설정할 때 이문서에 작성하면 됨.
+  web.xml 문서는 web 어플리케이션에 대한 환경 설정  
+  
+   <servlet>
+  	<servlet-name>서블릿네임</servlet-name>
+  	<servlet-class>패키지명.클래스명</servlet-class>
+  	<load-on-startup>로딩순서</load-on-startup>
+  </servlet>
+  -->
+  <!-- 웹 어플리케이션 구동시 JDBC (MySQL용 Driver )로딩하기
+  웹 어플리케이션 시작될 때 자동으로 JDBC 드라이버를 로딩하도록 만들면된다. -->
+
+  
+ <!--  <servlet>
+  	<servlet-name>mySQLDriverLoader</servlet-name>
+  	<servlet-class>jdbc.MySQLDriverLoader</servlet-class>
+  	<load-on-startup>2</load-on-startup>
+  </servlet> -->
+  
+  
+  <!-- 커넥션 풀 초기화 서블릿 설정 (p420)
+  	아래 코드를 추가하면 웹 어플리케이션이 시작할 때 DBCPInit 서블릿 클래스가 자동으로 시작되고
+  	init() 메서드가 호출된다. -->
+  	
+   <servlet>
+  	<servlet-name>DBCPInit</servlet-name>
+  	<servlet-class>jdbc.DBCPInit</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  
+  
+  
+  
+  
+  
+</web-app>
